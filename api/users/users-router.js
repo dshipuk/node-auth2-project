@@ -17,7 +17,7 @@ const { restricted, only } = require("../auth/auth-middleware.js");
     }
   ]
  */
-router.get("/", (req, res, next) => { // done for you
+router.get("/", restricted, (req, res, next) => { // done for you
   Users.find()
     .then(users => {
       res.json(users);
@@ -30,7 +30,7 @@ router.get("/", (req, res, next) => { // done for you
 
   This endpoint is RESTRICTED: only authenticated users with role 'admin'
   should have access.
-
+  
   response:
   status 200
   [
